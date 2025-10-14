@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #531793 0%, #1b53b4 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+.container {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;
+    transform: translateY(0);
+    transition: transform 0.3s ease-out;
+}
+
+/* Shake animation for error feedback */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+.container.shake {
+    animation: shake 0.5s;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-weight: 600;
+}
+
+.input-section {
+    display: flex;
+    margin-bottom: 25px;
+    gap: 10px;
+}
+
+#task-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#task-input:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.2);
+}
+
+#add-button {
+    padding: 12px 20px;
+    background-color: #2575fc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#add-button:hover {
+    background-color: #1a5ecf;
+    transform: translateY(-2px);
+}
+
+/* --- Controls Section --- */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.filters {
+    display: flex;
+    gap: 8px;
+}
+
+.filter-btn {
+    background-color: #e0e0e0;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    color: #555;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.filter-btn.active {
+    background-color: #6a11cb;
+    color: white;
+    font-weight: 600;
+}
+
+#clear-completed-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+#clear-completed-button:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+
+/* --- Task List Styles --- */
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#task-list li {
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 6px solid #6a11cb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative; /* Needed for absolute positioning of edit input */
+}
+
+/* Completion Styles */
+#task-list li.completed {
+    text-decoration: line-through;
+    color: #888;
+    border-left-color: #888;
+    background-color: #f0f0f0;
+    opacity: 0.7;
+}
+
+.task-content {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.task-checkbox {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.task-text {
+    flex-grow: 1;
+    word-break: break-word;
+}
+
+/* Edit Mode Styles */
+#task-list li.editing .task-content {
+    /* Temporarily hide the label content (checkbox and text) */
+    visibility: hidden;
+}
+
+#task-list li.editing input[type="text"] {
+    /* Display the input field over the hidden label content */
+    position: absolute;
+    top: 50%;
+    /* 45px = checkbox width + margin */
+    left: 45px; 
+    transform: translateY(-50%);
+    width: calc(100% - 150px);
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 1em;
+    visibility: visible;
+}
+
+/* Action Buttons */
+.task-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: #6a11cb;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: color 0.3s, transform 0.2s;
+    padding: 5px;
+}
+
+.action-btn.edit-btn:hover {
+    color: #28a745; 
+}
+
+.action-btn.delete-btn {
+    color: #dc3545; 
+}
+.action-btn.delete-btn:hover {
+    color: #c82333;
+}
+
+/* Responsive Adjustments (as before) */
+@media (max-width: 600px) {
+    .container { padding: 20px; margin: 20px; }
+    .input-section { flex-direction: column; gap: 15px; }
+    #add-button { width: 100%; justify-content: center; }
+    .controls { flex-direction: column; align-items: stretch; }
+    .filters { width: 100%; justify-content: space-around; margin-bottom: 10px; }
+    .filter-btn, #clear-completed-button { width: 100%; justify-content: center; }
+    #task-list li { flex-direction: column; align-items: flex-start; padding-bottom: 10px; margin-bottom: 15px; }
+    .task-actions { width: 100%; justify-content: flex-end; border-top: 1px dashed #eee; padding-top: 8px; }
+    #task-list li.editing input[type="text"] {
+        left: 30px; /* Adjust for smaller screens */
+        width: calc(100% - 110px);
+    }
+}
