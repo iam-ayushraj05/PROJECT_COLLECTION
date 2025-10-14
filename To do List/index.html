@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced To-Do List</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Advanced To-Do List ✨</h1>
+        
+        <div class="input-section">
+            <input type="text" id="task-input" placeholder="Add a new task..." maxlength="100">
+            <button id="add-button" title="Add Task">
+                <i class="fas fa-plus"></i> Add
+            </button>
+        </div>
+
+        <div class="controls">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="pending">Pending</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+            </div>
+            <button id="clear-completed-button" title="Clear all completed tasks">
+                <i class="fas fa-trash-can"></i> Clear Completed
+            </button>
+        </div>
+
+        <ul id="task-list">
+            
+        </ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
