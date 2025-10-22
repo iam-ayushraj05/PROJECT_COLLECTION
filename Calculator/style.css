@@ -1,0 +1,142 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Deep charcoal background for dark mode */
+    background-color: #121212; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+.calculator {
+    border-radius: 20px; 
+    width: 330px; 
+    /* Slightly lighter dark background for the calculator body */
+    background-color: #1e1e1e;
+    padding: 25px;
+    
+    /* Subtle shadows for a dark, lifted effect */
+    box-shadow: 
+        8px 8px 15px rgba(0, 0, 0, 0.4), /* Bottom-right dark shadow */
+        -8px -8px 15px rgba(40, 40, 40, 0.8); /* Top-left highlight */
+}
+
+.calculator-screen {
+    width: 100%;
+    height: 80px; 
+    background-color: #1e1e1e; /* Matches background */
+    color: #f0f0f0; /* Light text */
+    font-size: 3.2em;
+    text-align: right;
+    padding: 10px 15px;
+    border: none;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    
+    /* Indented shadow effect for the screen */
+    box-shadow: 
+        inset 4px 4px 8px #0d0d0d, /* Dark inset shadow */
+        inset -4px -4px 8px #2f2f2f; /* Highlight inset shadow */
+    letter-spacing: 1px;
+}
+
+.calculator-keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-gap: 15px;
+}
+
+button {
+    height: 65px; 
+    /* Button base color: a medium dark shade */
+    background-color: #2a2a2a; 
+    border: none;
+    border-radius: 15px;
+    font-size: 1.6em;
+    color: #f0f0f0; /* Light text for numbers */
+    cursor: pointer;
+    outline: none;
+    
+    /* Default dark mode button look (slightly raised) */
+    box-shadow: 
+        5px 5px 10px #0f0f0f,
+        -5px -5px 10px #454545;
+    transition: all 0.15s ease-in-out;
+}
+
+/* Button pressed state (indented) */
+button:active {
+    box-shadow: 
+        inset 3px 3px 6px #0f0f0f, 
+        inset -3px -3px 6px #454545;
+    transform: scale(0.98);
+    background-color: #222222;
+}
+
+/* --- Operator Styling (Orange Accent) --- */
+.operator {
+    color: #ff9500; /* Signature iOS-style orange */
+    font-weight: bold;
+}
+
+/* Operator pressed state */
+.operator:active {
+    background-color: #e68a00;
+    color: #fff;
+    box-shadow: 
+        inset 3px 3px 6px #a35f00, 
+        inset -3px -3px 6px #ff9500;
+}
+
+/* --- Utility Button Styling (Gray Accent) --- */
+.all-clear, .backspace {
+    color: #cccccc; /* Slightly lighter text for utility */
+    background-color: #404040;
+    font-size: 1.4em;
+}
+
+.all-clear:active, .backspace:active {
+    background-color: #333333;
+    box-shadow: 
+        inset 3px 3px 6px #222222, 
+        inset -3px -3px 6px #555555;
+}
+
+/* --- Equal Button Styling (Green Accent) --- */
+.equal-sign {
+    grid-column: 4 / 5;
+    grid-row: 4 / 6;
+    height: 145px; 
+    color: #f0f0f0; 
+    background-color: #2ecc71; /* Bright green */
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.equal-sign:active {
+    background-color: #24b561;
+    box-shadow: 
+        inset 3px 3px 6px #1a7545, 
+        inset -3px -3px 6px #42e684;
+}
+
+
+/* --- Layout adjustments (No changes here) --- */
+.calculator-keys button[value="0"] {
+    grid-column: 1 / 2;
+}
+
+.decimal {
+    grid-column: 2 / 3;
+}
+
+.all-clear {
+    grid-column: 3 / 4;
+}
+
+.backspace {
+    grid-column: 4 / 5;
+    grid-row: 1 / 2;
+}
