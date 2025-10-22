@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" class="calculator-screen" value="0" disabled data-previous-key-type="clear">
+
+        <div class="calculator-keys">
+
+            <button type="button" class="operator" data-action="add">+</button>
+            <button type="button" class="operator" data-action="subtract">-</button>
+            <button type="button" class="operator" data-action="multiply">&times;</button>
+            <button type="button" class="operator" data-action="divide">&divide;</button>
+
+            <button type="button" value="7">7</button>
+            <button type="button" value="8">8</button>
+            <button type="button" value="9">9</button>
+
+            <button type="button" value="4">4</button>
+            <button type="button" value="5">5</button>
+            <button type="button" value="6">6</button>
+
+            <button type="button" value="1">1</button>
+            <button type="button" value="2">2</button>
+            <button type="button" value="3">3</button>
+            
+            <button type="button" value="0">0</button>
+            <button type="button" class="decimal" data-action="decimal">.</button>
+            
+            <button type="button" class="all-clear" data-action="clear">AC</button> 
+            <button type="button" class="backspace" data-action="delete">&#9003;</button>
+            
+            <button type="button" class="equal-sign operator" data-action="calculate">=</button>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
