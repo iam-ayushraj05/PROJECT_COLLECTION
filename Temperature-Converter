@@ -1,0 +1,53 @@
+import tkinter as tk
+from tkinter import ttk, messagebox
+
+def convert_temperature():
+    try:
+        temp = float(entry_temp.get())
+        unit = combo_unit.get()
+        
+        if unit == "Celsius":
+            f = (temp * 9/5) + 32
+            k = temp + 273.15
+            result_label.config(text=f"{temp}°C = {f:.2f}°F = {k:.2f}K")
+        elif unit == "Fahrenheit":
+            c = (temp - 32) * 5/9
+            k = c + 273.15
+            result_label.config(text=f"{temp}°F = {c:.2f}°C = {k:.2f}K")
+        elif unit == "Kelvin":
+            c = temp - 273.15
+            f = (c * 9/5) + 32
+            result_label.config(text=f"{temp}K = {c:.2f}°C = {f:.2f}°F")
+        else:
+            messagebox.showerror("Error", "Please select a unit")
+    except ValueError:
+        messagebox.showerror("Error", "Please enter a valid number")
+
+# GUI Window
+root = tk.Tk()
+root.title("Temperature Converter")
+root.geometry("400x200")
+root.resizable(False, False)
+
+# Input Label
+label_temp = tk.Label(root, text="Enter Temperature:", font=("Arial", 12))
+label_temp.pack(pady=10)
+
+# Input Entry
+entry_temp = tk.Entry(root, font=("Arial", 12))
+entry_temp.pack(pady=5)
+
+# Unit Selection
+combo_unit = ttk.Combobox(root, values=["Celsius", "Fahrenheit", "Kelvin"], state="readonly", font=("Arial", 12))
+combo_unit.pack(pady=5)
+combo_unit.set("Celsius")
+
+# Convert Button
+convert_btn = tk.Button(root, text="Convert", command=convert_temperature, font=("Arial", 12), bg="skyblue")
+convert_btn.pack(pady=10)
+
+# Result Label
+result_label = tk.Label(root, text="", font=("Arial", 12), fg="green")
+result_label.pack(pady=5)
+
+root.mainloop()
